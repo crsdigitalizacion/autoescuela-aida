@@ -240,6 +240,19 @@
     });
   }
 
+  /* mapa de Google: se carga al acercarse; dentro de una vista previa queda el enlace */
+  const mb = $('#mapa-box');
+  if (mb && window.self === window.top) {
+    const load = () => {
+      const f = document.createElement('iframe');
+      f.title = 'Mapa de Autoescuela Aida en C. Torremuña, 7, Logroño';
+      f.loading = 'lazy'; f.referrerPolicy = 'no-referrer-when-downgrade';
+      f.src = 'https://www.google.com/maps?q=' + encodeURIComponent('Autoescuela Aida, Calle Torremuña 7, 26005 Logroño') + '&z=16&hl=es&output=embed';
+      mb.appendChild(f);
+    };
+    if ('IntersectionObserver' in window) { const o = new IntersectionObserver(es => { if (es[0].isIntersecting) { o.disconnect(); load(); } }, { rootMargin: '400px' }); o.observe(mb); } else load();
+  }
+
   /* carril con el cochecito */
   const railCar = $('.rail i');
   function scrollFraction() { const m = document.documentElement.scrollHeight - innerHeight; return m > 0 ? clamp(scrollY / m) : 0; }
