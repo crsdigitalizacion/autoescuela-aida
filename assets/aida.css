@@ -417,3 +417,15 @@ form.ask input:focus, form.ask select:focus { border-color: var(--azul); outline
 #wipe.go-in { transform: none; transition: transform .34s cubic-bezier(.77, 0, .175, 1); }
 #wipe.go-out { transform: translateY(-100%); transition: transform .5s cubic-bezier(.77, 0, .175, 1); }
 html.intro-on .fx .fx-w { opacity: 0 !important; transform: perspective(600px) translateY(.45em) rotateX(-75deg) !important; }
+
+/* Permisos: en móvil cada permiso lleva su foto, sin nada fijo encima */
+.pcard-img, .only-m { display: none; }
+@media (max-width: 860px) {
+  .garage-view { display: none; }
+  .pcard-img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 14px; margin-bottom: 18px; }
+  .only-d { display: none; }
+  .only-m { display: inline; }
+  .pcard { padding-block: 26px; }
+}
+#wipe { visibility: hidden; }
+#wipe.cover, #wipe.go-in, #wipe.go-out { visibility: visible; }
