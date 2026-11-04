@@ -330,7 +330,7 @@
   /* ---- OPINIONES: los paneles se acercan al bajar ---- */
   const road = $('.road3d');
   if (road && !still && innerWidth > 0) {
-    root.classList.add('js-fly');
+    root.classList.add('js-fly'); road.style.height = (road.querySelectorAll('.board').length * 75 + 100) + 'vh';
     const boards = $$('.board', road), ground = $('.ground', road), tip = $('.fly-tip', road);
     const n = boards.length;
     boards.forEach(b => { b.classList.remove('rv'); });
