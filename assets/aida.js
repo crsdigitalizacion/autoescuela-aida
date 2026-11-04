@@ -174,7 +174,7 @@
         const t = now - t0, u = Math.min(Math.max((t - HOLD) / GROW, 0), 1);
         if (t >= HOLD && !released) {
           released = true; root.classList.remove('intro-on');
-          const v = $('#hero-video'); if (v) { try { v.currentTime = 0; } catch (e) {} }
+          window.dispatchEvent(new Event('aida-intro-open'));
         }
         const e = u * u * u * (u * (6 * u - 15) + 10), s = Math.exp(Math.log(S) * e * e);
         zoom.setAttribute('transform', `translate(${px} ${py}) scale(${s}) translate(${-px} ${-py})`);
@@ -222,7 +222,13 @@
         }
       });
       hv.addEventListener('ended', () => { if (!fading) restart(); });
-      const pl = hv.play(); if (pl && pl.catch) pl.catch(() => {});
+      // arranca solo cuando ya hay vídeo suficiente y la entrada ha terminado
+      let ready = false, open = !root.classList.contains('intro-on'), started = false;
+      const go = () => { if (started || !ready || !open) return; started = true; const pl = hv.play(); if (pl && pl.catch) pl.catch(() => {}); };
+      hv.addEventListener('canplaythrough', () => { ready = true; go(); });
+      setTimeout(() => { ready = true; go(); }, 3500);
+      addEventListener('aida-intro-open', () => { open = true; go(); });
+      hv.load();
     }
   }
 
@@ -265,6 +271,18 @@
       mark(idx);
     };
     addEventListener('scroll', syncFromScroll, { passive: true }); syncFromScroll();
+  }
+
+  /* permisos en móvil: carrusel con botones */
+  const pc = $('.pcards'), pt = $$('.ptabs button');
+  if (pc && pt.length) {
+    const slides = $$('.pcard', pc);
+    const setTab = i => pt.forEach((b, k) => b.setAttribute('aria-pressed', String(i === k)));
+    const goTo = (i, smooth) => pc.scrollTo({ left: slides[i].offsetLeft - pc.offsetLeft, behavior: smooth && !still ? 'smooth' : 'auto' });
+    pt.forEach((b, i) => b.addEventListener('click', () => { setTab(i); goTo(i, true); }));
+    pc.addEventListener('scroll', () => { const i = Math.round(pc.scrollLeft / Math.max(pc.clientWidth, 1)); setTab(Math.min(i, slides.length - 1)); }, { passive: true });
+    const open = slides.findIndex(s => '#' + s.id === location.hash);
+    if (open > 0 && innerWidth <= 860) { const run = () => { goTo(open, false); setTab(open); scrollTo({ top: 0, behavior: 'instant' }); }; run(); addEventListener('load', run); }
   }
 
   /* ---- CÓMO FUNCIONA: el coche baja por la carretera ---- */

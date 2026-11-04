@@ -139,7 +139,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 
 /* ===== Portada con vídeo ===== */
 .hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: center; overflow: hidden; background: var(--tinta); color: #fff; }
-.hero-media { position: absolute; inset: 0; background: var(--tinta) url(portada.jpg) 60% 50% / cover no-repeat; }
+.hero-media { position: absolute; inset: 0; background: var(--tinta) url(portada.jpg?v=13) 60% 50% / cover no-repeat; }
 .hero-media video { width: 100%; height: 100%; object-fit: cover; object-position: 60% 50%; display: block; transition: opacity .7s ease; }
 .hero-media video.fade { opacity: 0; }
 .hero-scrim { position: absolute; inset: 0; background: linear-gradient(100deg, rgba(10,14,20,.68) 0, rgba(10,14,20,.42) 28%, rgba(10,14,20,0) 48%), linear-gradient(0deg, rgba(10,14,20,.42) 0, rgba(10,14,20,0) 26%); }
@@ -431,8 +431,8 @@ html.intro-on .fx .fx-w { opacity: 0 !important; transform: perspective(600px) t
 #wipe.cover, #wipe.go-in, #wipe.go-out { visibility: visible; }
 
 /* Opiniones: fondo con foto de la calle */
-.js-fly .road3d-stage { background: #2a2622 url(img/calle.jpg) 50% 54% / cover no-repeat; perspective-origin: 50% 54%; }
-.js-fly .road3d-stage::before { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(12,14,18,.2), rgba(12,14,18,.34)); }
+.js-fly .road3d-stage { background: #2a2622 url(img/calle.jpg?v=13) 50% 54% / cover no-repeat; perspective-origin: 50% 54%; }
+.js-fly .road3d-stage::before { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(12,14,18,.08), rgba(12,14,18,.2)); }
 .js-fly .ground { display: none; }
 /* menú sin desenfoque: evita tirones sobre el vídeo */
 .top-in { backdrop-filter: none; -webkit-backdrop-filter: none; background: rgba(255,255,255,.97); }
@@ -442,3 +442,34 @@ html.intro-on .fx .fx-w { opacity: 0 !important; transform: perspective(600px) t
   .js .plate.rv { opacity: 0; transform: perspective(800px) translateX(72%) rotateY(-32deg); transform-origin: 100% 50%; transition: opacity .4s ease, transform 1s cubic-bezier(.16, 1.2, .3, 1); transition-delay: 0ms; }
   .js .plate.rv.in { opacity: 1; transform: none; }
 }
+
+/* ===== Permisos en móvil: carrusel ===== */
+.ptabs { display: none; }
+@media (max-width: 860px) {
+  .ptabs { display: flex; align-items: center; gap: 6px; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 72px); z-index: 6; padding-block: 10px; background: var(--papel); }
+  .ptabs button { min-width: 58px; min-height: 46px; padding-top: 4px; border: 2px solid var(--tinta); border-radius: 9px; background: #fff; color: var(--tinta); font: 900 1.12rem/1 var(--display); cursor: pointer; transition: background-color .2s ease, color .2s ease, transform .16s var(--ease); }
+  .ptabs button:active { transform: scale(.96); }
+  .ptabs button[aria-pressed="true"] { background: var(--rojo); border-color: var(--rojo); color: #fff; }
+  .ptabs span { margin-left: auto; font: 700 .86rem/1.1 var(--display); color: var(--gris); text-align: right; }
+  .pcards { display: flex; align-items: flex-start; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; scrollbar-width: none; margin-left: calc(-1 * var(--gutter)); margin-right: calc(-1 * var(--gutter-r)); }
+  .pcards::-webkit-scrollbar { display: none; }
+  .pcards .pcard { flex: 0 0 100%; min-width: 0; scroll-snap-align: start; scroll-snap-stop: always; padding: 0 var(--gutter-r) 24px var(--gutter); scroll-margin-top: 0; }
+  .pcards .pcard-img { width: calc(100% + var(--gutter) + var(--gutter-r)); max-width: none; margin: 0 calc(-1 * var(--gutter-r)) 18px calc(-1 * var(--gutter)); border-radius: 0; aspect-ratio: 4 / 3; }
+}
+
+/* ===== Cómo funciona en móvil: foto a todo el ancho y entrada alterna ===== */
+@media (max-width: 860px) {
+  .leg { display: flex; flex-direction: column; align-items: stretch; padding-left: 58px; padding-block: 18px; overflow: visible; }
+  .leg > div { order: 2; padding-block: 16px 14px; }
+  .leg > .leg-img, .leg:nth-child(even) .leg-img { order: 1; margin: 0 calc(-1 * var(--gutter-r)) 0 0; border-radius: 16px 0 0 16px; aspect-ratio: 4 / 3; box-shadow: 0 18px 34px -24px rgba(20,24,31,.7); }
+  .leg .num { position: absolute; left: 68px; top: 28px; z-index: 2; width: 62px; height: 62px; margin: 0; font-size: 1.8rem; box-shadow: inset 0 0 0 3px var(--azul), inset 0 0 0 5px #fff, 0 8px 18px rgba(0,0,0,.45); }
+  .js .leg.rv { opacity: 1; transform: none; }
+  .js .leg.rv .leg-img { opacity: 0; transform: perspective(900px) translateX(60%) rotateY(-26deg); transform-origin: 100% 50%; transition: opacity .45s ease, transform 1s cubic-bezier(.16, 1.15, .3, 1); }
+  .js .leg.rv:nth-child(even) .leg-img { transform: perspective(900px) translateX(-40%) rotateY(26deg); transform-origin: 0 50%; }
+  .js .leg.rv.in .leg-img { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) { .js .leg.rv .leg-img { opacity: 1; transform: none; } }
+
+main { overflow-x: clip; }
+.garage > div { min-width: 0; }
+@media (max-width: 860px) { .garage { display: block; } .pcards { max-width: 100vw; } }
