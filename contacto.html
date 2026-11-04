@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Atkinson+Hyperlegible:wght@400;700&family=Overpass:wght@700;800;900&display=swap">
-<link rel="stylesheet" href="assets/aida.css?v=13">
+<link rel="stylesheet" href="assets/aida.css?v=14">
 </head>
 <body>
 <div id="intro" hidden></div>
@@ -37,7 +37,7 @@ s.setItem('aida-seen','1');
 <header class="top"><div class="top-in">
   <a class="logo" href="index.html" aria-label="Autoescuela Aida, inicio">AUTO-ESCUELA <span class="logo-big">AiDA</span></a>
   <nav class="nav" aria-label="Principal"><a href="index.html">Inicio</a><a href="permisos.html">Permisos</a><a href="como-funciona.html">Cómo funciona</a><a href="opiniones.html">Opiniones</a><a href="contacto.html" aria-current="page">Contacto</a></nav>
-  <a class="btn btn-rojo top-call" href="tel:+34941206749">941 20 67 49</a>
+  <div class="top-side"><a class="top-tel" href="tel:+34941206749">941 20 67 49</a><a class="btn btn-rojo top-call" href="apuntate.html">Apúntate</a></div>
 </div></header>
 <nav class="tabs" aria-label="Principal móvil"><a href="index.html">Inicio</a><a href="permisos.html">Permisos</a><a href="como-funciona.html">Cómo funciona</a><a href="opiniones.html">Opiniones</a><a href="contacto.html" aria-current="page">Contacto</a></nav>
 <div class="rail" aria-hidden="true"><i></i></div>
@@ -46,15 +46,8 @@ s.setItem('aida-seen','1');
 <section class="pagehead wrap"><p class="eyebrow">Contacto</p><h1>Pásate por Torremuña, 7.</h1><p class="lead">Te lo explicamos todo en persona. Si vienes con tu hijo o tu hija, mejor todavía.</p></section>
 <section class="wrap" style="padding-bottom:clamp(60px,9vw,110px)"><div class="contact">
   <div>
-    <div class="shopview tilt"><img src="assets/img/coche.jpg?v=13" alt="Coche rojo de autoescuela en una calle"></div>
-    <form class="ask" novalidate>
-      <h3>Te llamamos nosotros</h3>
-      <label for="f-nombre">Tu nombre<input id="f-nombre" name="nombre" autocomplete="name"></label>
-      <label for="f-tel">Tu teléfono<input id="f-tel" name="telefono" type="tel" autocomplete="tel"></label>
-      <label for="f-permiso">¿Qué permiso te interesa?<select id="f-permiso" name="permiso"><option>Permiso B (coche)</option><option>Permiso A2 (moto)</option><option>Permiso AM (ciclomotor)</option><option>Aún no lo sé</option></select></label>
-      <button class="btn btn-rojo" type="submit">Pedir que me llamen</button>
-      <p class="sent" hidden>Esta es una demostración: el formulario todavía no envía nada. En la web final, la petición llegará a la autoescuela.</p>
-    </form>
+    <div class="shopview tilt"><img src="assets/img/coche.jpg?v=14" alt="Coche rojo de autoescuela en una calle"></div>
+    <div class="ap-cta"><h3>¿Quieres apuntarte?</h3><p class="lead">Déjanos tus datos en un minuto y te llamamos.</p><a class="btn btn-rojo" href="apuntate.html">Apúntate</a></div>
   </div>
   <div>
     <span class="status" id="status"><i></i><span>Horario</span></span>
@@ -71,7 +64,7 @@ s.setItem('aida-seen','1');
 </main>
 <section class="cta"><div class="wrap cta-in">
   <h2>Tu carné empieza con una visita.</h2>
-  <div class="btns"><a class="btn btn-blanco" href="contacto.html">Cómo llegar</a><a class="btn btn-linea" href="tel:+34941206749">Llamar al 941 20 67 49</a></div>
+  <div class="btns"><a class="btn btn-blanco" href="apuntate.html">Apúntate</a><a class="btn btn-linea" href="tel:+34941206749">Llamar al 941 20 67 49</a></div>
 </div></section>
 <footer class="foot"><div class="wrap">
   <div class="foot-in">
@@ -81,6 +74,6 @@ s.setItem('aida-seen','1');
   </div>
   <p class="demo">Propuesta de diseño de CRS Digital para Autoescuela Aida. Datos y textos pendientes de revisión por la autoescuela. Vídeo y fotos creados con IA a modo de ejemplo, salvo la foto del simulador.</p>
 </div></footer>
-<script src="assets/aida.js?v=13"></script>
+<script src="assets/aida.js?v=14"></script>
 </body>
 </html>

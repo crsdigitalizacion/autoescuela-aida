@@ -139,7 +139,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 
 /* ===== Portada con vídeo ===== */
 .hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: center; overflow: hidden; background: var(--tinta); color: #fff; }
-.hero-media { position: absolute; inset: 0; background: var(--tinta) url(portada.jpg?v=13) 60% 50% / cover no-repeat; }
+.hero-media { position: absolute; inset: 0; background: var(--tinta) url(portada.jpg?v=14) 60% 50% / cover no-repeat; }
 .hero-media video { width: 100%; height: 100%; object-fit: cover; object-position: 60% 50%; display: block; transition: opacity .7s ease; }
 .hero-media video.fade { opacity: 0; }
 .hero-scrim { position: absolute; inset: 0; background: linear-gradient(100deg, rgba(10,14,20,.68) 0, rgba(10,14,20,.42) 28%, rgba(10,14,20,0) 48%), linear-gradient(0deg, rgba(10,14,20,.42) 0, rgba(10,14,20,0) 26%); }
@@ -431,7 +431,7 @@ html.intro-on .fx .fx-w { opacity: 0 !important; transform: perspective(600px) t
 #wipe.cover, #wipe.go-in, #wipe.go-out { visibility: visible; }
 
 /* Opiniones: fondo con foto de la calle */
-.js-fly .road3d-stage { background: #2a2622 url(img/calle.jpg?v=13) 50% 54% / cover no-repeat; perspective-origin: 50% 54%; }
+.js-fly .road3d-stage { background: #2a2622 url(img/calle.jpg?v=14) 50% 54% / cover no-repeat; perspective-origin: 50% 54%; }
 .js-fly .road3d-stage::before { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(12,14,18,.08), rgba(12,14,18,.2)); }
 .js-fly .ground { display: none; }
 /* menú sin desenfoque: evita tirones sobre el vídeo */
@@ -473,3 +473,46 @@ html.intro-on .fx .fx-w { opacity: 0 !important; transform: perspective(600px) t
 main { overflow-x: clip; }
 .garage > div { min-width: 0; }
 @media (max-width: 860px) { .garage { display: block; } .pcards { max-width: 100vw; } }
+
+/* ===== Botón Apúntate y teléfono en cabecera ===== */
+.top-tel { font: 800 .98rem/1 var(--display); text-decoration: none; white-space: nowrap; }
+.top-side { display: flex; align-items: center; gap: 14px; }
+@media (max-width: 1040px) { .top-tel { display: none; } }
+
+/* ===== Página Apúntate ===== */
+.ap-wrap { max-width: 860px; padding-block: 0 clamp(70px, 10vw, 120px); perspective: 1200px; }
+.ap-demo { background: #fff4d6; color: #4f3b00; border-radius: 10px; padding: 10px 14px; font-size: .96rem; }
+.ap-road { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); margin: 24px 0 30px; padding-top: 42px; font: 800 .92rem/1.1 var(--display); }
+.ap-road::before { content: ""; position: absolute; left: 0; right: 0; top: 8px; height: 22px; border-radius: 6px; background: var(--asfalto) repeating-linear-gradient(90deg, transparent 0 12px, #fff 12px 26px, transparent 26px 38px) 0 50% / 100% 2px no-repeat; }
+.ap-road span:nth-child(3) { text-align: center; } .ap-road span:nth-child(4) { text-align: right; }
+.ap-road i { position: absolute; top: 11px; left: 4px; width: 30px; height: 16px; border-radius: 5px; background: var(--rojo); box-shadow: inset -9px 0 0 -5px #bfe0f2; transition: left .7s cubic-bezier(.2, 1.1, .3, 1); z-index: 1; }
+.ap-step { border: 0; margin: 0; padding: 0; min-width: 0; animation: apin .55s var(--ease); transform-origin: 50% 0; }
+@keyframes apin { from { opacity: 0; transform: rotateX(-16deg) translateY(22px); } }
+.ap-step legend { padding: 0; margin-bottom: 18px; font: 900 clamp(1.6rem, 3.4vw, 2.3rem)/1.08 var(--display); letter-spacing: -.015em; outline: none; }
+.ap-opts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.ap-opt { position: relative; display: block; border-radius: 14px; overflow: hidden; background: #fff; box-shadow: inset 0 0 0 2px var(--linea); cursor: pointer; transition: box-shadow .18s ease, transform .2s var(--ease); }
+.ap-opt input { position: absolute; opacity: 0; }
+.ap-opt img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.ap-opt span { display: block; padding: 11px 12px 9px; font: 700 1.02rem/1.1 var(--display); }
+.ap-opt b { color: var(--rojo); font-weight: 900; margin-right: 4px; }
+.ap-opt:has(input:checked) { box-shadow: 0 0 0 3px var(--rojo); transform: translateY(-3px); }
+.ap-opt:has(input:focus-visible) { outline: 3px solid var(--azul); outline-offset: 3px; }
+.ap-none, .ap-ok { display: flex; gap: 10px; align-items: flex-start; margin-top: 16px; cursor: pointer; }
+.ap-none input, .ap-ok input { width: 22px; height: 22px; flex: none; margin: 1px 0 0; accent-color: var(--rojo); }
+.ap-nav { margin-top: 26px; }
+.ap-field { display: grid; gap: 6px; margin-bottom: 16px; max-width: 480px; }
+.ap-field label { font: 800 1rem/1.2 var(--display); }
+.ap-field input, .ap-field select { width: 100%; min-height: 52px; padding: 10px 12px; border: 2px solid #aab2bb; border-radius: 9px; background: #fff; color: var(--tinta); font: 400 1.05rem/1.3 var(--texto); }
+.ap-field input:focus, .ap-field select:focus { outline: none; border-color: var(--azul); box-shadow: 0 0 0 3px rgba(10,88,166,.22); }
+.ap-field input[aria-invalid="true"] { border-color: var(--rojo); }
+.ap-err { color: var(--rojo-osc); font-size: .95rem; font-weight: 700; margin-top: 4px; }
+.ap-sum { margin-top: 0; }
+.ap-sum dd { overflow-wrap: anywhere; }
+.ap-done { animation: apin .6s var(--ease); outline: none; }
+.ap-done > * + * { margin-top: 16px; }
+.ap-tick { display: grid; place-items: center; width: 68px; height: 68px; border-radius: 50%; background: #0d6e38; color: #fff; font-size: 2.2rem; animation: tick .6s cubic-bezier(.2, 1.6, .4, 1); }
+@keyframes tick { from { transform: scale(.5) rotate(-30deg); opacity: 0; } }
+.ap-cta { margin-top: 16px; background: #fff; border-radius: 18px; box-shadow: inset 0 0 0 2px var(--tinta); padding: clamp(20px, 3vw, 32px); }
+.ap-cta .lead { margin: 8px 0 16px; }
+@media (max-width: 620px) { .ap-opts { grid-template-columns: 1fr; } .ap-opt { display: grid; grid-template-columns: 112px 1fr; align-items: center; } .ap-opt img { height: 84px; aspect-ratio: auto; } .ap-road { font-size: .84rem; } }
+@media (prefers-reduced-motion: reduce) { .ap-step, .ap-done, .ap-tick { animation: none; } }

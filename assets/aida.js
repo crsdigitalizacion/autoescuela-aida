@@ -57,7 +57,7 @@
       { q: '¿A qué edad puedo empezar?', k: ['edad', 'anos', 'menor', 'hijo', 'hija'], a: 'El permiso AM se puede sacar desde los 15 años. El A2 y el B, desde los 18.' },
       { q: '¿Cuánto cuesta?', k: ['precio', 'cuesta', 'cuanto vale', 'coste', 'tarifa', 'pagar', 'euros', 'dinero'], a: 'El precio depende del permiso y de las clases que necesites, así que te lo explicamos en persona. A eso se suman la tasa de la DGT y el informe médico. ' + CONTACTO },
       { q: '¿Cuánto se tarda en sacarlo?', k: ['tarda', 'tiempo', 'meses', 'rapido', 'cuando acabo'], a: 'Depende de tu ritmo, de las clases que necesites y de las fechas de examen. Te orientamos cuando vengas. ' + CONTACTO },
-      { q: '¿Qué necesito para apuntarme?', k: ['apuntar', 'matricula', 'necesito', 'documento', 'dni', 'nie', 'requisito'], a: 'Normalmente, tu DNI o NIE en vigor y el informe médico de aptitud. Pregúntanos antes de venir y te confirmamos lo que necesitas en tu caso.' },
+      { q: '¿Qué necesito para apuntarme?', k: ['apuntar', 'matricula', 'necesito', 'documento', 'dni', 'nie', 'requisito'], a: 'Normalmente, tu DNI o NIE en vigor y el informe médico de aptitud. Pregúntanos antes de venir y te confirmamos lo que necesitas en tu caso. También puedes dejar tus datos en la página Apúntate y te llamamos.' },
       { q: '¿Cómo es el simulador?', k: ['simulador'], a: 'Es un puesto de conducción con asiento, volante, pedales y palanca, para coger soltura con los mandos antes de salir a la calle. Puedes verlo en la autoescuela.' },
       { q: '¿Puedo cambiarme de autoescuela?', k: ['cambiar', 'cambio', 'otra autoescuela', 'traslado'], a: 'Sí, se puede. Pásate, cuéntanos en qué punto estás y vemos cómo seguir. ' + CONTACTO },
       { q: '¿Qué pasa si suspendo?', k: ['suspend', 'repetir', 'no apruebo', 'catear'], a: 'Puedes volver a presentarte. Te explicamos los pasos y lo que conviene repasar antes. ' + CONTACTO },
@@ -193,6 +193,49 @@
     for (let i = 0; i < n; i++) { const s = document.createElement('i'); s.textContent = '★'; s.style.setProperty('--s', i); st.appendChild(s); }
   });
   $$('.boards .board').forEach((b, i) => b.style.setProperty('--d', (i * 170) + 'ms'));
+
+  /* ---- APÚNTATE: preinscripción en 3 pasos (demostración, no envía nada) ---- */
+  const apf = $('#ap-form');
+  if (apf) {
+    const steps = $$('.ap-step', apf), car = $('#ap-car'), val = id => $(id).value.trim();
+    const sel = { '#b': '#p-b', '#a2': '#p-a2', '#am': '#p-am' }[location.hash];
+    if (sel) $(sel).checked = true;
+    const err = (id, inp, on) => { $(id).hidden = !on; if (inp) { if (on) inp.setAttribute('aria-invalid', 'true'); else inp.removeAttribute('aria-invalid'); } };
+    const ok1 = () => {
+      const n = $('#ap-nombre'), t = $('#ap-tel');
+      const nOk = val('#ap-nombre').length > 1, tOk = /^(\+?34)?[6789]\d{8}$/.test(val('#ap-tel').replace(/[\s.-]/g, ''));
+      err('#e-nombre', n, !nOk); err('#e-tel', t, !tOk);
+      if (!nOk) n.focus(); else if (!tOk) t.focus();
+      return nOk && tOk;
+    };
+    let cur = 0;
+    const show = i => {
+      steps.forEach((s, k) => { s.hidden = k !== i; });
+      cur = i;
+      car.style.left = i === 0 ? '4px' : i === 1 ? 'calc(50% - 15px)' : 'calc(100% - 34px)';
+      if (i === 2) {
+        $('#s-permiso').textContent = $('input[name="permiso"]:checked').value;
+        $('#s-nombre').textContent = val('#ap-nombre'); $('#s-tel').textContent = val('#ap-tel'); $('#s-hora').textContent = $('#ap-hora').value;
+      }
+      $('legend', steps[i]).focus({ preventScroll: true });
+      const top = apf.getBoundingClientRect().top + scrollY - 190;
+      if (scrollY > top) scrollTo({ top, behavior: still ? 'auto' : 'smooth' });
+    };
+    $$('[data-go]', apf).forEach(b => b.addEventListener('click', () => {
+      const to = +b.dataset.go;
+      if (cur === 1 && to === 2 && !ok1()) return;
+      show(to);
+    }));
+    apf.addEventListener('submit', e => {
+      e.preventDefault();
+      if (cur !== 2) return;
+      const on = $('#ap-priv').checked; err('#e-priv', null, !on);
+      if (!on) return;
+      apf.hidden = true; $('.ap-road').hidden = true; $('.ap-wrap > .ap-demo').hidden = true;
+      const d = $('#ap-done'); d.hidden = false; d.focus({ preventScroll: true });
+      scrollTo({ top: 0, behavior: still ? 'auto' : 'smooth' });
+    });
+  }
 
   /* carril con el cochecito */
   const railCar = $('.rail i');

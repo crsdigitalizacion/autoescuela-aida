@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Atkinson+Hyperlegible:wght@400;700&family=Overpass:wght@700;800;900&display=swap">
-<link rel="stylesheet" href="assets/aida.css?v=13">
+<link rel="stylesheet" href="assets/aida.css?v=14">
 </head>
 <body>
 <div id="intro" hidden></div>
@@ -37,7 +37,7 @@ s.setItem('aida-seen','1');
 <header class="top"><div class="top-in">
   <a class="logo" href="index.html" aria-label="Autoescuela Aida, inicio">AUTO-ESCUELA <span class="logo-big">AiDA</span></a>
   <nav class="nav" aria-label="Principal"><a href="index.html">Inicio</a><a href="permisos.html" aria-current="page">Permisos</a><a href="como-funciona.html">Cómo funciona</a><a href="opiniones.html">Opiniones</a><a href="contacto.html">Contacto</a></nav>
-  <a class="btn btn-rojo top-call" href="tel:+34941206749">941 20 67 49</a>
+  <div class="top-side"><a class="top-tel" href="tel:+34941206749">941 20 67 49</a><a class="btn btn-rojo top-call" href="apuntate.html">Apúntate</a></div>
 </div></header>
 <nav class="tabs" aria-label="Principal móvil"><a href="index.html">Inicio</a><a href="permisos.html" aria-current="page">Permisos</a><a href="como-funciona.html">Cómo funciona</a><a href="opiniones.html">Opiniones</a><a href="contacto.html">Contacto</a></nav>
 <div class="rail" aria-hidden="true"><i></i></div>
@@ -47,25 +47,25 @@ s.setItem('aida-seen','1');
 <section class="wrap" style="padding-bottom:clamp(50px,8vw,100px)"><div class="garage">
   <div class="garage-view">
     <div class="switch" role="group" aria-label="Elegir permiso"><button type="button" aria-pressed="true">B</button><button type="button" aria-pressed="false">A2</button><button type="button" aria-pressed="false">AM</button></div>
-    <img class="gimg on" src="assets/img/coche.jpg?v=13" alt="Coche rojo de autoescuela, permiso B"><img class="gimg" src="assets/img/moto.jpg?v=13" alt="Moto roja, permiso A2"><img class="gimg" src="assets/img/ciclomotor.jpg?v=13" alt="Ciclomotor rojo, permiso AM">
+    <img class="gimg on" src="assets/img/coche.jpg?v=14" alt="Coche rojo de autoescuela, permiso B"><img class="gimg" src="assets/img/moto.jpg?v=14" alt="Moto roja, permiso A2"><img class="gimg" src="assets/img/ciclomotor.jpg?v=14" alt="Ciclomotor rojo, permiso AM">
   </div>
   <div>
     <div class="ptabs" role="group" aria-label="Elegir permiso"><button type="button" aria-pressed="true">B</button><button type="button" aria-pressed="false">A2</button><button type="button" aria-pressed="false">AM</button><span>Desliza para cambiar</span></div>
     <div class="pcards">
     <article class="pcard" id="b" data-i="0">
-  <img class="pcard-img" src="assets/img/coche.jpg?v=13" alt="Foto de coche, permiso B" loading="lazy"><div class="big">B</div><h2>Coche</h2><p class="lead">El carné que abre casi todas las puertas: para ir a trabajar, a estudiar o de viaje.</p>
+  <img class="pcard-img" src="assets/img/coche.jpg?v=14" alt="Foto de coche, permiso B" loading="lazy"><div class="big">B</div><h2>Coche</h2><p class="lead">El carné que abre casi todas las puertas: para ir a trabajar, a estudiar o de viaje.</p>
   <dl class="facts"><div><dt>Edad</dt><dd>Desde los 18 años</dd></div><div><dt>Conduces</dt><dd>Coches de hasta 3.500 kg y hasta 8 pasajeros más el conductor</dd></div><div><dt>Exámenes</dt><dd>Teórico y práctico en circulación</dd></div><div><dt>Para ti si</dt><dd>Es tu primer carné y quieres moverte sin depender de nadie</dd></div></dl>
-  <div class="btns"><a class="btn btn-rojo" href="contacto.html">Preguntar por el B</a></div>
+  <div class="btns"><a class="btn btn-rojo" href="apuntate.html#b">Apúntate al B</a></div>
 </article>
     <article class="pcard" id="a2" data-i="1">
-  <img class="pcard-img" src="assets/img/moto.jpg?v=13" alt="Foto de moto, permiso A2" loading="lazy"><div class="big">A2</div><h2>Moto</h2><p class="lead">Para disfrutar de la moto con una potencia con la que se aprende bien.</p>
+  <img class="pcard-img" src="assets/img/moto.jpg?v=14" alt="Foto de moto, permiso A2" loading="lazy"><div class="big">A2</div><h2>Moto</h2><p class="lead">Para disfrutar de la moto con una potencia con la que se aprende bien.</p>
   <dl class="facts"><div><dt>Edad</dt><dd>Desde los 18 años</dd></div><div><dt>Conduces</dt><dd>Motocicletas de hasta 35 kW (algo menos de 47 CV)</dd></div><div><dt>Exámenes</dt><dd>Teórico, maniobras en pista y circulación</dd></div><div><dt>Para ti si</dt><dd>Quieres moto de verdad para ciudad y carretera</dd></div></dl>
-  <div class="btns"><a class="btn btn-rojo" href="contacto.html">Preguntar por el A2</a></div>
+  <div class="btns"><a class="btn btn-rojo" href="apuntate.html#a2">Apúntate al A2</a></div>
 </article>
     <article class="pcard" id="am" data-i="2">
-  <img class="pcard-img" src="assets/img/ciclomotor.jpg?v=13" alt="Foto de ciclomotor, permiso AM" loading="lazy"><div class="big">AM</div><h2>Ciclomotor</h2><p class="lead">La primera autonomía. Es el permiso que se puede sacar antes.</p>
+  <img class="pcard-img" src="assets/img/ciclomotor.jpg?v=14" alt="Foto de ciclomotor, permiso AM" loading="lazy"><div class="big">AM</div><h2>Ciclomotor</h2><p class="lead">La primera autonomía. Es el permiso que se puede sacar antes.</p>
   <dl class="facts"><div><dt>Edad</dt><dd>Desde los 15 años</dd></div><div><dt>Conduces</dt><dd>Ciclomotores de hasta 50 cc y cuatriciclos ligeros</dd></div><div><dt>Exámenes</dt><dd>Teórico y maniobras en pista</dd></div><div><dt>Para ti si</dt><dd>Tienes 15 años o más, o quieres un ciclomotor para moverte por la ciudad</dd></div></dl>
-  <div class="btns"><a class="btn btn-rojo" href="contacto.html">Preguntar por el AM</a></div>
+  <div class="btns"><a class="btn btn-rojo" href="apuntate.html#am">Apúntate al AM</a></div>
 </article>
     </div>
     <p class="small">Requisitos según la <a href="https://www.dgt.es/nuestros-servicios/permisos-de-conducir/clases-de-permisos-de-conducir/" rel="noopener">DGT</a>. Pregúntanos por precios y plazos: te lo explicamos en persona.</p>
@@ -75,7 +75,7 @@ s.setItem('aida-seen','1');
 </main>
 <section class="cta"><div class="wrap cta-in">
   <h2>Tu carné empieza con una visita.</h2>
-  <div class="btns"><a class="btn btn-blanco" href="contacto.html">Cómo llegar</a><a class="btn btn-linea" href="tel:+34941206749">Llamar al 941 20 67 49</a></div>
+  <div class="btns"><a class="btn btn-blanco" href="apuntate.html">Apúntate</a><a class="btn btn-linea" href="tel:+34941206749">Llamar al 941 20 67 49</a></div>
 </div></section>
 <footer class="foot"><div class="wrap">
   <div class="foot-in">
@@ -85,6 +85,6 @@ s.setItem('aida-seen','1');
   </div>
   <p class="demo">Propuesta de diseño de CRS Digital para Autoescuela Aida. Datos y textos pendientes de revisión por la autoescuela. Vídeo y fotos creados con IA a modo de ejemplo, salvo la foto del simulador.</p>
 </div></footer>
-<script src="assets/aida.js?v=13"></script>
+<script src="assets/aida.js?v=14"></script>
 </body>
 </html>
