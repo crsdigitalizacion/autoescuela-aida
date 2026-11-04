@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Permisos · Autoescuela Aida</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Permisos B, A2 y AM en Autoescuela Aida, Logroño.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Autoescuela Aida">
+<meta property="og:title" content="Autoescuela Aida · Logroño">
+<meta property="og:description" content="Tu carné, paso a paso. Coche, moto y ciclomotor en la calle Torremuña, desde 2001.">
+<meta property="og:url" content="https://crsdigitalizacion.github.io/autoescuela-aida/">
+<meta property="og:image" content="https://crsdigitalizacion.github.io/autoescuela-aida/assets/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Atkinson+Hyperlegible:wght@400;700&family=Overpass:wght@700;800;900&display=swap">
+<link rel="stylesheet" href="assets/aida.css">
+</head>
+<body>
+<div id="intro" hidden></div>
+<div id="wipe" aria-hidden="true"><span>AiDA</span></div>
+<script>
+(function(){var s=null;try{s=sessionStorage}catch(e){}
+var still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!s||still)return;
+var w=document.getElementById('wipe'),i=document.getElementById('intro');
+try{
+if(s.getItem('aida-nav')){s.removeItem('aida-nav');w.className='cover';}
+else if(!s.getItem('aida-seen')){i.hidden=false;document.documentElement.classList.add('intro-on');}
+s.setItem('aida-seen','1');
+}catch(e){}})();
+</script>
+<header class="top"><div class="top-in">
+  <a class="logo" href="index.html" aria-label="Autoescuela Aida, inicio">AUTO-ESCUELA <span class="logo-big">AiDA</span></a>
+  <nav class="nav" aria-label="Principal"><a href="index.html">Inicio</a><a href="permisos.html" aria-current="page">Permisos</a><a href="como-funciona.html">Cómo funciona</a><a href="opiniones.html">Opiniones</a><a href="contacto.html">Contacto</a></nav>
+  <a class="btn btn-rojo top-call" href="tel:+34941206749">941 20 67 49</a>
+</div></header>
+<nav class="tabs" aria-label="Principal móvil"><a href="index.html">Inicio</a><a href="permisos.html" aria-current="page">Permisos</a><a href="como-funciona.html">Cómo funciona</a><a href="opiniones.html">Opiniones</a><a href="contacto.html">Contacto</a></nav>
+<div class="rail" aria-hidden="true"><i></i></div>
+<main>
+
+<section class="pagehead wrap"><p class="eyebrow">Permisos</p><h1>Elige qué quieres conducir.</h1><p class="lead">Baja y la foto cambia con cada permiso, o elige uno con los botones.</p></section>
+<section class="wrap" style="padding-bottom:clamp(50px,8vw,100px)"><div class="garage">
+  <div class="garage-view">
+    <div class="switch" role="group" aria-label="Elegir permiso"><button type="button" aria-pressed="true">B</button><button type="button" aria-pressed="false">A2</button><button type="button" aria-pressed="false">AM</button></div>
+    <img class="gimg on" src="assets/img/coche.jpg" alt="Coche rojo de autoescuela, permiso B"><img class="gimg" src="assets/img/moto.jpg" alt="Moto roja, permiso A2"><img class="gimg" src="assets/img/ciclomotor.jpg" alt="Ciclomotor rojo, permiso AM">
+  </div>
+  <div>
+    <article class="pcard" id="b" data-i="0">
+  <div class="big">B</div><h2>Coche</h2><p class="lead">El carné que abre casi todas las puertas: para ir a trabajar, a estudiar o de viaje.</p>
+  <dl class="facts"><div><dt>Edad</dt><dd>Desde los 18 años</dd></div><div><dt>Conduces</dt><dd>Coches de hasta 3.500 kg y hasta 8 pasajeros más el conductor</dd></div><div><dt>Exámenes</dt><dd>Teórico y práctico en circulación</dd></div><div><dt>Para ti si</dt><dd>Es tu primer carné y quieres moverte sin depender de nadie</dd></div></dl>
+  <div class="btns"><a class="btn btn-rojo" href="contacto.html">Preguntar por el B</a></div>
+</article>
+    <article class="pcard" id="a2" data-i="1">
+  <div class="big">A2</div><h2>Moto</h2><p class="lead">Para disfrutar de la moto con una potencia con la que se aprende bien.</p>
+  <dl class="facts"><div><dt>Edad</dt><dd>Desde los 18 años</dd></div><div><dt>Conduces</dt><dd>Motocicletas de hasta 35 kW (algo menos de 47 CV)</dd></div><div><dt>Exámenes</dt><dd>Teórico, maniobras en pista y circulación</dd></div><div><dt>Para ti si</dt><dd>Quieres moto de verdad para ciudad y carretera</dd></div></dl>
+  <div class="btns"><a class="btn btn-rojo" href="contacto.html">Preguntar por el A2</a></div>
+</article>
+    <article class="pcard" id="am" data-i="2">
+  <div class="big">AM</div><h2>Ciclomotor</h2><p class="lead">La primera autonomía. Es el permiso que se puede sacar antes.</p>
+  <dl class="facts"><div><dt>Edad</dt><dd>Desde los 15 años</dd></div><div><dt>Conduces</dt><dd>Ciclomotores de hasta 50 cc y cuatriciclos ligeros</dd></div><div><dt>Exámenes</dt><dd>Teórico y maniobras en pista</dd></div><div><dt>Para ti si</dt><dd>Tienes 15 años o más, o quieres un ciclomotor para moverte por la ciudad</dd></div></dl>
+  <div class="btns"><a class="btn btn-rojo" href="contacto.html">Preguntar por el AM</a></div>
+</article>
+    <p class="small">Requisitos según la <a href="https://www.dgt.es/nuestros-servicios/permisos-de-conducir/clases-de-permisos-de-conducir/" rel="noopener">DGT</a>. Pregúntanos por precios y plazos: te lo explicamos en persona.</p>
+  </div>
+</div></section>
+
+</main>
+<section class="cta"><div class="wrap cta-in">
+  <h2>Tu carné empieza con una visita.</h2>
+  <div class="btns"><a class="btn btn-blanco" href="contacto.html">Cómo llegar</a><a class="btn btn-linea" href="tel:+34941206749">Llamar al 941 20 67 49</a></div>
+</div></section>
+<footer class="foot"><div class="wrap">
+  <div class="foot-in">
+    <div><b>Autoescuela Aida</b>C. Torremuña, 7. 26005 Logroño, La Rioja<br>Teléfono 941 20 67 49</div>
+    <div><b>Horario</b>Lunes a jueves: 9:30 a 14:00 y 17:00 a 20:00<br>Viernes: 9:30 a 14:00</div>
+    <div><b>Síguenos</b><a href="https://www.instagram.com/autoescuelaaida" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/autoescuelaaida/" rel="noopener">Facebook</a></div>
+  </div>
+  <p class="demo">Propuesta de diseño de CRS Digital para Autoescuela Aida. Datos y textos pendientes de revisión por la autoescuela. Vídeo y fotos creados con IA a modo de ejemplo, salvo la foto del simulador.</p>
+</div></footer>
+<script src="assets/aida.js"></script>
+</body>
+</html>
