@@ -73,7 +73,9 @@
     const btn = document.createElement('button');
     btn.type = 'button'; btn.className = 'faq-btn';
     btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-5A8 8 0 1 1 21 12z"/></svg>Preguntas';
-    let panel = null, log, busy = false;
+    let panel = null, log, chips, moreBtn, faqForm, busy = false;
+    const answered = () => { chips.hidden = true; faqForm.hidden = true; log.appendChild(moreBtn); moreBtn.hidden = false; log.scrollTop = log.scrollHeight; };
+    const reset = () => { log.textContent = ''; add('bot', '¿Qué quieres saber? Elige una pregunta o escribe la tuya.'); chips.hidden = false; log.appendChild(chips); faqForm.hidden = false; log.scrollTop = 0; };
     const history = [];
     const add = (cls, text) => { const m = document.createElement('div'); m.className = 'msg ' + cls; m.textContent = text; log.appendChild(m); log.scrollTop = log.scrollHeight; return m; };
     async function askAI(q, bubble) {
@@ -92,11 +94,11 @@
     }
     async function ask(q) {
       if (busy || !q.trim()) return;
-      busy = true; add('you', q);
+      busy = true; chips.hidden = true; faqForm.hidden = true; add('you', q);
       const bubble = add('bot', 'Pensando…');
       const ok = await askAI(q, bubble);
       if (!ok) { const f = local(q); bubble.textContent = f ? f.a : 'De eso no tengo información aquí. ' + CONTACTO; }
-      log.scrollTop = log.scrollHeight; busy = false;
+      busy = false; answered();
     }
     function open() {
       btn.hidden = true;
@@ -107,8 +109,9 @@
       document.body.appendChild(panel);
       log = $('.faq-log', panel);
       add('bot', 'Hola. ¿Qué quieres saber? Elige una pregunta o escribe la tuya.');
-      const chips = document.createElement('div'); chips.className = 'chips';
-      FAQ.forEach(f => { const b = document.createElement('button'); b.type = 'button'; b.textContent = f.q; b.addEventListener('click', () => { const y = add('you', f.q); log.insertBefore(y, chips); const m = add('bot', f.a); log.insertBefore(m, chips); chips.scrollIntoView({ block: 'nearest' }); }); chips.appendChild(b); });
+      chips = document.createElement('div'); chips.className = 'chips'; faqForm = $('.faq-form', panel);
+      moreBtn = document.createElement('button'); moreBtn.type = 'button'; moreBtn.className = 'btn btn-rojo faq-more'; moreBtn.textContent = 'Tengo otra pregunta'; moreBtn.addEventListener('click', reset);
+      FAQ.forEach(f => { const b = document.createElement('button'); b.type = 'button'; b.textContent = f.q; b.addEventListener('click', () => { chips.hidden = true; add('you', f.q); add('bot', f.a); answered(); }); chips.appendChild(b); });
       log.appendChild(chips);
       $('.faq-x', panel).addEventListener('click', () => { panel.hidden = true; btn.hidden = false; btn.focus(); });
       $('.faq-form', panel).addEventListener('submit', e => { e.preventDefault(); const i = $('#faq-input'); const q = i.value; i.value = ''; ask(q); });
@@ -413,7 +416,7 @@
         b.style.pointerEvents = Math.abs(d) < 0.3 ? 'auto' : 'none';
       });
       if (ground) ground.style.setProperty('--road', (sm * 3200).toFixed(0) + 'px');
-      if (tip) tip.style.opacity = sm > 0.05 ? '0' : '1';
+      if (tip) tip.style.opacity = sm > 0.97 ? '0' : '1';
     })();
   }
 

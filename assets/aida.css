@@ -139,7 +139,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 
 /* ===== Portada con vídeo ===== */
 .hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: center; overflow: hidden; background: var(--tinta); color: #fff; }
-.hero-media { position: absolute; inset: 0; background: var(--tinta) url(portada.jpg?v=14) 60% 50% / cover no-repeat; }
+.hero-media { position: absolute; inset: 0; background: var(--tinta) url(portada.jpg?v=15) 60% 50% / cover no-repeat; }
 .hero-media video { width: 100%; height: 100%; object-fit: cover; object-position: 60% 50%; display: block; transition: opacity .7s ease; }
 .hero-media video.fade { opacity: 0; }
 .hero-scrim { position: absolute; inset: 0; background: linear-gradient(100deg, rgba(10,14,20,.68) 0, rgba(10,14,20,.42) 28%, rgba(10,14,20,0) 48%), linear-gradient(0deg, rgba(10,14,20,.42) 0, rgba(10,14,20,0) 26%); }
@@ -431,7 +431,7 @@ html.intro-on .fx .fx-w { opacity: 0 !important; transform: perspective(600px) t
 #wipe.cover, #wipe.go-in, #wipe.go-out { visibility: visible; }
 
 /* Opiniones: fondo con foto de la calle */
-.js-fly .road3d-stage { background: #2a2622 url(img/calle.jpg?v=14) 50% 54% / cover no-repeat; perspective-origin: 50% 54%; }
+.js-fly .road3d-stage { background: #2a2622 url(img/calle.jpg?v=15) 50% 54% / cover no-repeat; perspective-origin: 50% 54%; }
 .js-fly .road3d-stage::before { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(12,14,18,.08), rgba(12,14,18,.2)); }
 .js-fly .ground { display: none; }
 /* menú sin desenfoque: evita tirones sobre el vídeo */
@@ -516,3 +516,17 @@ main { overflow-x: clip; }
 .ap-cta .lead { margin: 8px 0 16px; }
 @media (max-width: 620px) { .ap-opts { grid-template-columns: 1fr; } .ap-opt { display: grid; grid-template-columns: 112px 1fr; align-items: center; } .ap-opt img { height: 84px; aspect-ratio: auto; } .ap-road { font-size: .84rem; } }
 @media (prefers-reduced-motion: reduce) { .ap-step, .ap-done, .ap-tick { animation: none; } }
+
+/* Reseñas: aviso fijo de seguir bajando */
+.js-fly .fly-tip { display: inline-flex; align-items: center; gap: 9px; min-height: 46px; padding: .3em 1.1em .15em .9em; font-size: 1rem; background: rgba(255,255,255,.96); box-shadow: 0 10px 24px -10px rgba(0,0,0,.6); }
+.fly-tip svg { width: 20px; height: 20px; color: var(--rojo); animation: cue 1.3s var(--ease) infinite; }
+@media (max-width: 860px) { .fly-tip { left: var(--gutter); transform: none; bottom: calc(env(safe-area-inset-bottom, 0px) + 68px); } }
+/* Asistente: botón de otra pregunta */
+.faq-more { align-self: flex-start; margin-top: 4px; min-height: 48px; animation: msg .3s var(--ease); }
+/* Contacto: fila del horario bien encuadrada */
+.dato:has(.hours) { align-items: start; }
+.hours td { padding: 3px 0; line-height: 1.4; }
+.hours tr:first-child td { padding-top: 0; }
+.hours td:last-child { white-space: nowrap; padding-left: 12px; }
+@media (max-width: 480px) { .dato { grid-template-columns: 78px minmax(0, 1fr); gap: 10px; } }
+@media (prefers-reduced-motion: reduce) { .fly-tip svg, .faq-more { animation: none; } }
