@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Apúntate · Autoescuela Aida</title>
+<title>Matrícula · Autoescuela Aida</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Preinscripción online en Autoescuela Aida, Logroño.">
+<meta name="description" content="Matrícula online en Autoescuela Aida, Logroño.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Autoescuela Aida">
 <meta property="og:title" content="Autoescuela Aida · Logroño">
@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Atkinson+Hyperlegible:wght@400;700&family=Overpass:wght@700;800;900&display=swap">
-<link rel="stylesheet" href="assets/aida.css?v=16">
+<link rel="stylesheet" href="assets/aida.css?v=17">
 </head>
 <body>
 <div id="intro" hidden></div>
@@ -43,42 +43,56 @@ s.setItem('aida-seen','1');
 <div class="rail" aria-hidden="true"><i></i></div>
 <main>
 
-<section class="pagehead wrap"><p class="eyebrow">Apúntate</p><h1>Empieza tu carné hoy.</h1><p class="lead">Déjanos tus datos en un minuto. Te llamamos para resolver tus dudas y terminar la matrícula. Si es para tu hijo o tu hija, puedes rellenarlo tú.</p></section>
+<section class="pagehead wrap"><p class="eyebrow">Matrícula</p><h1>Matricúlate desde aquí.</h1><p class="lead">Elige tu permiso, rellena tus datos, haz la transferencia y envíanos tu DNI y el justificante por WhatsApp.</p></section>
 <section class="wrap ap-wrap">
-  <p class="ap-demo"><b>Demostración:</b> por ahora este formulario no envía ni guarda ningún dato.</p>
-  <div class="ap-road" aria-hidden="true"><i id="ap-car"></i><span>Permiso</span><span>Tus datos</span><span>Revisar</span></div>
+  <p class="ap-demo" id="ap-test"><b>Página en pruebas:</b> no hagas ninguna transferencia. El WhatsApp va a un número de prueba de CRS Digital, no a la autoescuela.</p>
+  <div class="ap-road ap-road4" aria-hidden="true"><i id="ap-car"></i><span>Permiso</span><span>Datos</span><span>Pago</span><span>WhatsApp</span></div>
   <form id="ap-form" novalidate>
     <fieldset class="ap-step" data-step="0">
       <legend tabindex="-1">¿Qué quieres conducir?</legend>
       <div class="ap-opts">
-        <label class="ap-opt"><input type="radio" name="permiso" id="p-b" value="Permiso B (coche)" checked><img src="assets/img/coche.jpg?v=16" alt=""><span><b>B</b> Coche</span></label>
-        <label class="ap-opt"><input type="radio" name="permiso" id="p-a2" value="Permiso A2 (moto)"><img src="assets/img/moto.jpg?v=16" alt=""><span><b>A2</b> Moto</span></label>
-        <label class="ap-opt"><input type="radio" name="permiso" id="p-am" value="Permiso AM (ciclomotor)"><img src="assets/img/ciclomotor.jpg?v=16" alt=""><span><b>AM</b> Ciclomotor</span></label>
+        <label class="ap-opt"><input type="radio" name="permiso" id="p-b" value="Permiso B (coche)" checked><img src="assets/img/coche.jpg?v=17" alt=""><span><b>B</b> Coche</span></label>
+        <label class="ap-opt"><input type="radio" name="permiso" id="p-a2" value="Permiso A2 (moto)"><img src="assets/img/moto.jpg?v=17" alt=""><span><b>A2</b> Moto</span></label>
+        <label class="ap-opt"><input type="radio" name="permiso" id="p-am" value="Permiso AM (ciclomotor)"><img src="assets/img/ciclomotor.jpg?v=17" alt=""><span><b>AM</b> Ciclomotor</span></label>
       </div>
-      <label class="ap-none"><input type="radio" name="permiso" id="p-x" value="Aún no lo sé"> Aún no lo sé, quiero que me aconsejéis</label>
       <div class="btns ap-nav"><button type="button" class="btn btn-rojo" data-go="1">Siguiente</button></div>
     </fieldset>
     <fieldset class="ap-step" data-step="1" hidden>
-      <legend tabindex="-1">¿Cómo te llamamos?</legend>
-      <div class="ap-field"><label for="ap-nombre">Nombre</label><input id="ap-nombre" autocomplete="name" maxlength="80"><p class="ap-err" id="e-nombre" hidden>Escribe tu nombre para saber por quién preguntar.</p></div>
+      <legend tabindex="-1">Tus datos</legend>
+      <div class="ap-field"><label for="ap-nombre">Nombre</label><input id="ap-nombre" autocomplete="given-name" maxlength="60"><p class="ap-err" id="e-nombre" hidden>Escribe tu nombre.</p></div>
+      <div class="ap-field"><label for="ap-apellidos">Apellidos</label><input id="ap-apellidos" autocomplete="family-name" maxlength="80"><p class="ap-err" id="e-apellidos" hidden>Escribe tus apellidos.</p></div>
       <div class="ap-field"><label for="ap-tel">Teléfono</label><input id="ap-tel" type="tel" inputmode="tel" autocomplete="tel" maxlength="16"><p class="ap-err" id="e-tel" hidden>Escribe un teléfono de 9 cifras, como 600 123 456.</p></div>
-      <div class="ap-field"><label for="ap-hora">¿Cuándo te viene mejor?</label><select id="ap-hora"><option>Por la mañana</option><option>Por la tarde</option><option>Me da igual</option></select></div>
-      <div class="btns ap-nav"><button type="button" class="btn btn-claro" data-go="0">Atrás</button><button type="button" class="btn btn-rojo" data-go="2">Siguiente</button></div>
+      <label class="ap-ok"><input type="checkbox" id="ap-priv"> Acepto enviar estos datos, la foto de mi DNI y el justificante a Autoescuela Aida por WhatsApp para tramitar mi matrícula.</label>
+      <p class="ap-err" id="e-priv" hidden>Marca la casilla para continuar.</p>
+      <div class="btns ap-nav"><button type="button" class="btn btn-claro" data-go="0">Atrás</button><button type="button" class="btn btn-rojo" data-go="2">Ir al pago</button></div>
     </fieldset>
     <fieldset class="ap-step" data-step="2" hidden>
-      <legend tabindex="-1">Revisa tus datos</legend>
-      <dl class="facts ap-sum"><div><dt>Permiso</dt><dd id="s-permiso"></dd></div><div><dt>Nombre</dt><dd id="s-nombre"></dd></div><div><dt>Teléfono</dt><dd id="s-tel"></dd></div><div><dt>Llamada</dt><dd id="s-hora"></dd></div></dl>
-      <label class="ap-ok"><input type="checkbox" id="ap-priv"> Acepto que Autoescuela Aida use estos datos para contactar conmigo sobre mi matrícula.</label>
-      <p class="ap-err" id="e-priv" hidden>Marca la casilla para poder enviar la solicitud.</p>
-      <div class="btns ap-nav"><button type="button" class="btn btn-claro" data-go="1">Atrás</button><button type="submit" class="btn btn-rojo">Enviar solicitud</button></div>
+      <legend tabindex="-1">Haz la transferencia</legend>
+      <p class="lead">Hazla desde la app de tu banco con estos datos y guarda el justificante.</p>
+      <dl class="facts ap-sum">
+        <div><dt>Permiso</dt><dd id="s-permiso"></dd></div>
+        <div><dt>Importe</dt><dd class="ap-pend">Pendiente de confirmar</dd></div>
+        <div><dt>IBAN</dt><dd class="ap-pend">Pendiente de la autoescuela</dd></div>
+        <div><dt>Titular</dt><dd class="ap-pend">Pendiente de la autoescuela</dd></div>
+        <div><dt>Concepto</dt><dd><span id="s-concepto"></span> <button type="button" class="copy" id="ap-copy">Copiar</button></dd></div>
+      </dl>
+      <div class="btns ap-nav"><button type="button" class="btn btn-claro" data-go="1">Atrás</button><button type="button" class="btn btn-rojo" data-go="3">Siguiente</button></div>
+    </fieldset>
+    <fieldset class="ap-step" data-step="3" hidden>
+      <legend tabindex="-1">Envíanoslo por WhatsApp</legend>
+      <ol class="ap-list">
+        <li>Pulsa el botón y se abrirá WhatsApp con tus datos ya escritos.</li>
+        <li>Adjunta la <b>foto del DNI por las dos caras</b> y el <b>justificante de la transferencia</b>.</li>
+        <li>Envía el mensaje. La web no puede adjuntar las fotos por ti.</li>
+      </ol>
+      <div class="btns ap-nav"><button type="button" class="btn btn-claro" data-go="2">Atrás</button><a class="btn ap-wa" id="ap-wa" href="https://wa.me/34657719647" target="_blank" rel="noopener">Abrir WhatsApp</a></div>
     </fieldset>
   </form>
   <div class="ap-done" id="ap-done" tabindex="-1" hidden>
     <span class="ap-tick" aria-hidden="true">✓</span>
-    <h2>Así terminaría tu solicitud</h2>
-    <p class="lead">En la web definitiva, la autoescuela recibirá estos datos y te llamará para terminar la matrícula. Normalmente hay que llevar el DNI o NIE y el informe médico; te confirmarán lo que necesitas.</p>
-    <p class="ap-demo"><b>Demostración:</b> esta solicitud no se ha enviado. Para apuntarte de verdad, llama al <b>941 20 67 49</b>.</p>
-    <div class="btns"><a class="btn btn-rojo" href="index.html">Volver al inicio</a></div>
+    <h2>Último paso: comprueba el envío</h2>
+    <p class="lead">Tu matrícula queda pendiente hasta que recibamos el mensaje con las fotos, revisemos la transferencia y te respondamos. Si no se ha abierto WhatsApp, vuelve a intentarlo.</p>
+    <div class="btns"><a class="btn btn-claro" id="ap-wa2" href="https://wa.me/34657719647" target="_blank" rel="noopener">Abrir WhatsApp otra vez</a><a class="btn btn-rojo" href="index.html">Volver al inicio</a></div>
   </div>
 </section>
 
@@ -95,6 +109,6 @@ s.setItem('aida-seen','1');
   </div>
   <p class="demo">Propuesta de diseño de CRS Digital para Autoescuela Aida. Datos y textos pendientes de revisión por la autoescuela. Vídeo y fotos creados con IA a modo de ejemplo, salvo la foto del simulador.</p>
 </div></footer>
-<script src="assets/aida.js?v=16"></script>
+<script src="assets/aida.js?v=17"></script>
 </body>
 </html>
